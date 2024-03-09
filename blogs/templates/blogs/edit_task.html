@@ -1,0 +1,10 @@
+{% extends "blogs/base.html" %}
+{% block content %}
+	<p><a href="{% url 'blogs:blogposts' %}">{{ blogpost}}</a></p>
+	<p>Изменить блог:</p>
+		<form action="{% url 'blogs:edit_blogpost' blogpost.id %}" method='post'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button name="submit">Сохранить изменения</button>
+	</form>
+{% endblock content %}
